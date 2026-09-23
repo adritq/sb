@@ -1,270 +1,218 @@
 ---
 version: alpha
-name: Core Web
-description: Sistema semântico para interfaces Core Web, com tokens, componentes públicos e regras de composição publicados no Figma.
+name: Core Design System
+description: Linguagem visual e regras de uso compartilhadas pelos produtos Web e App.
 omitted:
   - Elevation & Depth
   - Shapes
 ---
 
-# Design System — Core Web
+# Core Design System
 
 ## Overview
 
-Esta é a referência semântica do Design System Core Web: explica **por que**, **quando** e **como** usar os recursos publicados no Figma. O Figma é a fonte visual e normativa de variantes, propriedades e valores; este arquivo documenta as decisões de uso para design, produto e engenharia.
+Este é o documento consolidado e autocontido do Core Design System. Use-o ao fornecer contexto para uma LLM ou para qualquer pessoa que precise tomar decisões de interface sem consultar os documentos internos do repositório.
+
+O sistema possui duas bibliotecas de componentes:
+
+- **Core Web:** componentes e padrões para produtos web.
+- **Core App:** componentes e padrões para aplicativos móveis.
+
+Elas compartilham identidade de marca, Global Tokens, Alias Tokens, assets, tipografia e princípios de experiência. Componentes, navegação, comportamento e composição podem ser específicos da plataforma.
+
+### Princípios globais de design
+
+#### Simples
+
+Reduzimos esforço, ruído e escolhas desnecessárias. Cada tela prioriza a tarefa principal, apresenta informação em ordem compreensível e revela complexidade apenas quando necessária.
+
+- Prefira o caminho mais direto para concluir uma tarefa.
+- Use linguagem clara, rótulos específicos e ações reconhecíveis.
+- Agrupe informações relacionadas e elimine elementos sem função.
+
+#### Moderno
+
+Expressamos tecnologia por clareza, precisão, fluidez e qualidade de acabamento — não por decoração ou novidade.
+
+- Use componentes, tokens e padrões consistentes para criar confiança.
+- Faça estados, carregamentos e transições parecerem intencionais e contínuos.
+- Adote novos padrões apenas quando melhorarem compreensão, eficiência ou acessibilidade.
+
+#### Universal
+
+Projetamos para diferentes pessoas, habilidades, dispositivos, contextos, idiomas e níveis de familiaridade digital.
+
+- Ofereça mais de uma forma de perceber e operar informações e controles.
+- Não presuma visão, precisão motora, conexão estável, contexto silencioso ou conhecimento prévio.
+- Preserve tarefa e significado quando a interface for ampliada, traduzida, reduzida ou usada com tecnologia assistiva.
 
 ### Fontes de verdade
 
-- [Biblioteca de componentes](https://www.figma.com/design/emMSpxSdN92klss1Vh1ou6/Core-Web?node-id=1-8)
-- [Biblioteca de assets](https://www.figma.com/design/fu1sRTGOuDJj2ZLkV8lSX1/Assets?node-id=209-36)
 - [Biblioteca de tokens](https://www.figma.com/design/ZPWfhmidgyfkok9RYa6QWE/Design-Tokens)
-- [Mural de composições e casos de uso](https://www.figma.com/design/7R9SXfp0vhVqh8hSBtpQRr/SB-Mural?node-id=22-5108)
+- [Biblioteca de assets](https://www.figma.com/design/fu1sRTGOuDJj2ZLkV8lSX1/Assets?node-id=209-36)
+- [Biblioteca Core Web](https://www.figma.com/design/emMSpxSdN92klss1Vh1ou6/Core-Web?node-id=1-8)
+- [Biblioteca Core App](https://www.figma.com/design/RXrjdZA9A3xqRGaUr2U3Ek/SB-Core-App?node-id=53-4420&p=f&t=DvbzE2OsMGjtGWvL-0)
+- [SB-Mural](https://www.figma.com/design/7R9SXfp0vhVqh8hSBtpQRr/SB-Mural?node-id=22-5108)
 
-Em caso de conflito: tokens publicados → componente publicado → este documento → mural de composições → especificação de tela.
-
-### Princípios de uso
-
-1. Comece pela intenção da interface, não pela aparência desejada.
-2. Escolha o componente na categoria semântica correta e use apenas propriedades e variantes publicadas.
-3. Combine componentes públicos; itens iniciados por `.` são internos e não entram diretamente em telas.
-4. Use tokens, nunca valores soltos, para decisões repetíveis.
-
-### Mural de composições
-
-O [SB-Mural](https://www.figma.com/design/7R9SXfp0vhVqh8hSBtpQRr/SB-Mural?node-id=22-5108) é a referência de experiência para combinar componentes, tokens e assets em contextos reais. Ele não substitui as regras semânticas dos componentes.
-
-Use-o para definir hierarquia, combinações de componentes, densidade, responsividade e estados de onboarding, autenticação, busca, formulários, drawers, headers, listas, seleção, navegação e conclusão de tarefa. Use precedentes equivalentes como ponto de partida — referência, não cópia — e adicione ao mural novos casos recorrentes bem resolvidos.
-
-Uma boa composição parte da tarefa da pessoa usuária, prioriza conteúdo e ações de forma inequívoca, prevê estados relevantes (carregamento, vazio, erro, sucesso e indisponibilidade), preserva contraste e densidade adequados e mantém contexto, retorno e progresso ao longo do fluxo. Sempre que o mural contiver imagens, crie imagens alinhadas ao guia de marca do tema.
+Em caso de conflito, aplique esta prioridade: tokens publicados → componente publicado da plataforma → este documento → página correspondente no Mural → especificação da tela.
 
 ## Colors
 
-Os valores de cor são normativos na [Biblioteca de tokens](https://www.figma.com/design/ZPWfhmidgyfkok9RYa6QWE/Design-Tokens); não os replique como valores locais neste arquivo. Quando valores CSS forem consolidados, publique-os no front matter como `colors`.
+Os valores exatos são definidos na Biblioteca de Tokens. Use os nomes semânticos abaixo; não invente cores, opacidades ou variações locais quando um token publicado atender à intenção.
 
-- **Global Tokens:** 145 tokens base, nos modos `Value`, `Aurora` e `Floqui`.
-- **Alias Tokens:** 127 tokens semânticos, nos modos `Light`, `Dark`, `Aurora` e `Floqui`.
-- Prefira aliases semânticos como `action/primary/bg`, `text color/heading`, `surface/bg base`, `selected/border` e `negative/label`.
+- **Global Tokens:** valores de fundação, nos modos Value, Aurora e Floqui.
+- **Alias Tokens:** intenção semântica, nos modos Light, Dark, Aurora e Floqui.
 
-Global Tokens são a fundação dos aliases e só devem ser usados diretamente quando não houver alias que expresse a intenção. Aurora e Floqui são modos do mesmo sistema, não sistemas independentes. Os grupos semânticos cobrem superfícies, texto, bordas, ícones, ações, seleção, desabilitado e feedback.
+Prefira Alias Tokens, como action/primary/bg, text color/heading, surface/bg base, selected/border e negative/label. Use Global Tokens diretamente apenas quando não houver alias adequado.
+
+Aurora e Floqui são modos do mesmo sistema, não sistemas independentes. No frame raiz, Global Tokens e Alias Tokens devem apontar para o modo da mesma marca.
+
+Use cor para reforçar significado, nunca como único indicador de estado. Estados de sucesso, erro, seleção, aviso ou indisponibilidade também precisam de texto, ícone, padrão ou outro sinal compreensível.
 
 ## Typography
 
-Os estilos são semânticos e seus aliases definem tamanho, line-height, peso e cor. Aplique o estilo publicado; não replique nem sobrescreva manualmente seus atributos.
+Use os estilos semânticos publicados. Não sobrescreva manualmente família, tamanho, peso, espaçamento ou line-height.
 
-### Heading XL
+- **Heading XL:** título principal de página, fluxo ou tarefa; use uma vez por área principal.
+- **Heading LG:** título de seção principal sob um Heading XL.
+- **Heading MD:** título de seção, card, painel ou etapa.
+- **Heading SM:** título de agrupamento local.
+- **Heading XS:** título de subgrupo compacto.
+- **Paragraph:** conteúdo principal, explicação e orientação em sequência.
+- **Description:** contexto breve, metadado e informação secundária.
 
-Título principal de página ou contexto de maior destaque. Use uma vez por área principal; não use em seções, cards ou rótulos.
-
-### Heading LG
-
-Título de primeiro nível dentro de uma página. Organiza blocos principais sob um `Heading XL`.
-
-### Heading MD
-
-Título de seção, card, painel ou etapa dentro de uma área já identificada por heading maior. Não é texto de apoio ou metadado.
-
-### Heading SM
-
-Título curto de agrupamentos locais que aumenta a escaneabilidade sem criar nova camada dominante.
-
-### Heading XS
-
-Título de menor escala para subgrupos compactos, itens complexos e áreas internas. Não use como label, metadado ou destaque decorativo.
-
-### Paragraph
-
-Texto corrido de explicação, orientação, introdução ou conteúdo principal. Não é para rótulos curtos ou metadados.
-
-### Description
-
-Texto secundário para contexto, metadados, instrução auxiliar e suporte. Não use para informação crítica, erro ou instrução obrigatória.
+Todo texto autoral fora de uma instância de componente deve receber um desses estilos. Cor aplicada isoladamente não substitui um estilo tipográfico.
 
 ## Layout
 
-Use a variável publicada correspondente em gaps, paddings, raios, fundos e bordas. Para cores, prefira Alias Tokens; para medidas, use Global Tokens somente se não houver alias. Um valor manual, ainda que visualmente idêntico, não é aplicação do token.
+### Regras compartilhadas
 
-Todo texto autoral fora de um componente publicado deve receber um estilo semântico Core Web (`Heading`, `Paragraph` ou `Description`). Não sobrescreva família, tamanho, peso ou line-height; textos de instâncias públicas seguem o componente.
+Use variáveis publicadas em gap, padding, raio, fundo e borda. Um valor digitado manualmente, mesmo que visualmente igual ao token, não conta como aplicação do sistema.
 
-Assets publicados incluem ícones, símbolos, logos e marcas de pagamento. Ícones em ações usam `Button Icon` e, quando ambíguos, `Tooltip`. Use `Brand` para logo — nunca arquivo solto quando o componente existir.
+Uma boa composição:
 
-Para área logada desktop, use [Home área logada](https://www.figma.com/design/7R9SXfp0vhVqh8hSBtpQRr/SB-Mural?node-id=52-2273) como precedente: navegação global superior, painel de abertura, indicadores e seções de acompanhamento. Uma arquitetura diferente exige justificativa na especificação da tela.
+- parte da tarefa da pessoa usuária, não do componente disponível;
+- torna conteúdo, ação primária e ações secundárias inequívocos;
+- mantém contraste e densidade apropriados ao dispositivo;
+- prevê carregamento, vazio, erro, sucesso e indisponibilidade quando aplicável;
+- preserva contexto, retorno e progresso em fluxos longos.
+
+### Core Web
+
+Use a página Web do SB-Mural como precedente para arquitetura de navegação, hierarquia, desktop e responsividade. Para área logada desktop, o precedente é a composição Home área logada: navegação global superior, painel de abertura, indicadores e seções de acompanhamento.
+
+Projete reflow e zoom sem perda de informação ou tarefa. Todo fluxo deve funcionar por teclado, com foco visível, ordem de foco lógica e foco não coberto por cabeçalho fixo, modal ou outro conteúdo.
+
+### Core App
+
+Use a página App do SB-Mural como precedente para hierarquia, densidade, estados e transições mobile.
+
+- Considere safe areas, teclado virtual e zonas de toque desde o início.
+- Priorize uma tarefa principal por tela.
+- Defina comportamento para conteúdo longo, rolagem, orientação, offline, carregamento, vazio e erro.
+- Use navegação, sheets, drawers e tabs somente nas variantes publicadas na Core App.
 
 ## Components
 
-### Ações
+### Regras comuns
 
-#### Button
+Use componentes públicos e suas variantes publicadas. Itens iniciados por ponto são internos e não devem ser inseridos diretamente em telas. Preserve propriedades, tokens e estilos das instâncias.
 
-Executa ação no contexto atual, como enviar, confirmar ou avançar. Não use para navegação; use `Link Icon` ou navegação nativa. Use `Toast` após conclusão e `Alert` quando a consequência precisa persistir.
+Ícones em ações devem usar Button Icon; quando o significado não for inequívoco, complemente com Tooltip. Use Brand para logos e identidade de marca, nunca arquivos soltos quando o componente existir.
 
-#### Button Icon
+### Core Web
 
-Executa ação por ícone em espaços reduzidos, como fechar, editar, excluir ou expandir. Não use em ação primária/crítica ou quando o ícone não for autoexplicativo; nesses casos use `Button` com rótulo e, quando necessário, `Tooltip`.
+#### Ações
 
-#### Link Icon
+- **Button:** executa ação no contexto atual; não use para navegação.
+- **Button Icon:** ação por ícone em espaço reduzido; não use para ações primárias ou ambíguas.
+- **Link Icon:** navegação ou ação textual de baixa hierarquia; não use para operação local principal.
 
-Navega a outro destino ou representa ação textual de baixa hierarquia com ícone direcional. Não use para ação primária ou operação local.
+#### Conteúdo, identidade e dados
 
-### Conteúdo, identidade e dados
+- **Accordion:** revela conteúdo complementar; não esconda conteúdo essencial.
+- **Brand:** exibe identidade institucional; não é ornamento ou avatar.
+- **Avatar:** representa pessoa ou perfil; não use para logo ou ação.
+- **Currency e Sale Currency:** exibem valores monetários; não capturam valor.
+- **Icon:** representa conceito visual; ícone isolado não é controle interativo.
+- **Image:** reserva mídia em proporção previsível; não use para avatar ou logo.
+- **Badge:** indica contador ou status numérico sobre outro elemento.
+- **Tag:** classifica status ou categoria por texto curto; não é interativa.
 
-#### Accordion
+#### Containers e overlays
 
-Revela conteúdo complementar em FAQ, detalhes, configurações ou filtros avançados. Não oculte conteúdo essencial nem use como navegação.
+- **Card:** agrupa conteúdo relacionado.
+- **Clickable Card:** transforma toda a superfície em uma única ação; não use quando houver várias ações internas.
+- **Selectable Card:** permite escolha visualmente rica; prefira Radio Button ou Checkbox quando o controle compacto atender.
+- **Popover:** conteúdo complementar ancorado; não é menu, tooltip ou feedback.
+- **Popover Menu:** lista contextual de ações; seus subcomponentes iniciados por ponto são internos.
+- **Tooltip:** explicação breve; nunca contém informação essencial.
 
-#### Brand
+#### Formulários, navegação e feedback
 
-Exibe logo ou símbolo em cabeçalhos, rodapés, autenticação e carregamento. Não é ornamento ou avatar; use o `.svg` do tema na biblioteca DS Assets.
+- **Input Text, Password e Text Area:** capturam texto curto, sensível e longo, respectivamente.
+- **Input Select:** escolhe um valor de formulário; não use para navegação ou múltipla seleção.
+- **Input Date e Date Picker:** o calendário acompanha o campo; Date Picker não é inserido isoladamente.
+- **Checkbox:** múltiplas escolhas independentes.
+- **Radio Button:** uma escolha em grupo pequeno.
+- **Switch:** ativação binária com efeito imediato.
+- **Dropdown:** agrupa links ou ações; não substitui Input Select.
+- **Progress Stepper:** mostra fluxo sequencial de etapas, não navegação livre.
+- **Alert:** situação persistente que pede atenção ou ação.
+- **Toast:** resultado breve e temporário de uma ação.
+- **Skeleton:** estrutura de carregamento; não é estado permanente.
 
-#### Avatar
+### Core App
 
-Representa pessoa, entidade ou perfil por imagem, iniciais ou ícone. Não use para logo ou ação. `Badge` indica status, `Tooltip` pode mostrar nome e `Skeleton` circular cobre carregamento.
+Use apenas componentes publicados na Core App para interação móvel. Documente e use os padrões móveis de navegação, inputs, seleção, sheets, dialogs, alerts e feedback conforme a biblioteca.
 
-#### Currency e Sale Currency
-
-`Currency` exibe preço, saldo ou transação; `Sale Currency` compara promoção a preço original tachado. Não use para números não monetários nem captura de valor.
-
-#### Icon
-
-Representa conceito, categoria ou ação visualmente. Ícone isolado não é botão; use `Button Icon` para interação e `Brand` para identidade.
-
-#### Image
-
-Reserva mídia com proporção previsível para cards, galerias e listas. Não use para avatar ou logo; use `Skeleton` quadrado no carregamento.
-
-#### Badge
-
-Indica contador, notificação ou status numérico sobre outro elemento. Não classifica conteúdo por texto nem é ação.
-
-#### Tag
-
-Classifica categoria ou status por texto curto e cor semântica. É informativa, não interativa; não substitui `Button`, `Badge` ou `Toast`.
-
-### Containers e overlays
-
-#### Card
-
-Agrupa conteúdo relacionado. Use `Clickable Card` quando toda a superfície navegar e `Selectable Card` para escolha; pode conter `Image`, `Button` e slots.
-
-#### Clickable Card
-
-Torna o card uma única zona de toque para navegação ou ação contextual. Não use se houver ações internas independentes nem para seleção.
-
-#### Selectable Card
-
-Escolhe opções visualmente ricas, como planos, pagamento ou configurações. Prefira `Radio Button` ou `Checkbox` quando um controle compacto atender.
-
-#### Popover
-
-Conteúdo complementar flutuante e ancorado, para formulários curtos, configurações rápidas e interação contextual. Não use para ações em lista, feedback ou texto curto.
-
-#### Popover Menu
-
-Lista flutuante de ações ou opções contextuais. Não use para conteúdo genérico ou seleção de formulário. `.Popover Menu-Items` e `.Popover Menu-List` são internos.
-
-#### Tooltip
-
-Explicação breve ao hover, especialmente para ícones e botões sem rótulo. Não use para conteúdo longo, formulário, feedback ou informação essencial.
-
-### Formulários e seleção
-
-#### Input Text
-
-Captura informação curta em uma linha, como nome, e-mail e endereço. Para texto longo use `Input Text Area`; para opções, `Input Select`.
-
-#### Input Password
-
-Captura senha, PIN ou dado oculto, com alternância de visibilidade, label, apoio e erro. Não use para dado não sensível.
-
-#### Input Select
-
-Captura uma escolha predefinida em formulário. Não use para texto livre, múltipla seleção ou navegação; com duas a cinco opções, prefira `Radio Button`.
-
-#### Input Date e Date Picker
-
-`Input Date` captura data ou intervalo e integra `Date Picker`, que não aparece isolado. Não use para data somente leitura ou horário isolado; componentes `.Date Picker` são internos.
-
-#### Input Text Area
-
-Captura conteúdo em múltiplas linhas, como comentários e mensagens. Não use para entrada curta ou formato estruturado interno.
-
-#### Checkbox
-
-Seleciona múltiplas opções independentes, inclusive estado indeterminado. Não use para escolha exclusiva ou alternância imediata.
-
-#### Radio Button
-
-Seleciona exatamente uma opção em grupo pequeno. Não use para múltipla seleção, alternância binária ou lista extensa.
-
-#### Switch
-
-Ativa ou desativa configuração binária de efeito imediato. Não use quando a escolha exige confirmação ou submissão de formulário.
-
-### Navegação e progresso
-
-#### Dropdown
-
-Agrupa links ou ações sob rótulo. Não use para valor de formulário (`Input Select`) ou conteúdo livre (`Popover`).
-
-#### Progress Stepper
-
-Mostra etapa de fluxo sequencial, como onboarding, cadastro ou checkout. Não use para progresso contínuo ou navegação livre; `.Progress Stepper-Settings` é interno.
-
-### Feedback
-
-#### Alert
-
-Comunica situação persistente que pede atenção ou ação, como instabilidade, manutenção ou erro. Não substitui `Toast`, `Tooltip` ou `Tag`.
-
-#### Toast
-
-Confirma ou informa resultado breve e temporário de uma ação. Para mensagem que deve persistir, use `Alert`.
-
-#### Skeleton
-
-Preserva estrutura visual no carregamento: circular para avatar e quadrado para imagem. Não use como estado permanente.
+Não adapte componentes Web para mobile sem variante publicada. Ao escolher um componente, priorize alcance, legibilidade, toque, contexto de navegação e continuidade de tarefa.
 
 ## Do's and Don'ts
 
-### Semântica
+### Usabilidade e acessibilidade
 
-- **Ação local:** `Button`; **navegação/destino:** `Link Icon`, `Clickable Card` ou `Dropdown`; **ação contextual em lista:** `Popover Menu`.
-- **Múltipla seleção:** `Checkbox`; **escolha única pequena:** `Radio Button`; **efeito binário imediato:** `Switch`; **escolha de formulário:** `Input Select`; **escolha rica:** `Selectable Card`.
-- **Confirmação temporária:** `Toast`; **situação persistente:** `Alert`; **explicação de controle:** `Tooltip`; **carregamento estruturado:** `Skeleton`.
+O alvo mínimo para produtos Web é WCAG 2.2 nível AA. Os mesmos princípios orientam Core App, complementados pelas diretrizes nativas de cada plataforma.
 
-### Acessibilidade e conteúdo
+#### Perceptível
 
-- Todo controle interativo precisa de nome acessível; ícone sozinho não basta.
-- `Tooltip` complementa, não substitui, nome visível ou acessível.
-- Label explica o dado; placeholder não substitui label.
-- Labels de ação devem conter verbo, ser sucintos e ter no máximo três palavras.
-- Erros explicam como corrigir o problema.
-- Estados dependentes de cor exigem texto, ícone ou outro sinal adicional.
-- Foco e teclado seguem a ordem lógica do conteúdo.
+- Texto comum requer contraste de pelo menos 4,5:1; texto grande, 3:1.
+- Imagens informativas precisam de alternativa textual equivalente; decoração não deve gerar ruído para leitor de tela.
+- Suporte aumento de texto, zoom e reflow sem perda de conteúdo ou tarefa.
+- Não dependa exclusivamente de cor, posição, forma ou som para comunicar instrução ou estado.
+
+#### Operável
+
+- Toda funcionalidade Web deve funcionar por teclado, sem aprisionamento de foco.
+- Todo controle precisa de foco visível e de área de toque de pelo menos 24 × 24 px CSS; prefira áreas mais generosas para ações importantes ou isoladas.
+- Gestos de arrastar, hover, movimento ou pressionamento longo devem oferecer alternativa simples de toque, clique ou teclado.
+- Permita reduzir, pausar ou evitar movimento não essencial; não use flashes que possam provocar desconforto.
+
+#### Compreensível
+
+- Use linguagem direta, títulos descritivos, rótulos consistentes e ações previsíveis.
+- Não dispare mudanças inesperadas ao receber foco ou preencher um campo.
+- Mostre erro próximo ao campo, explique a correção e preserve valores já preenchidos quando possível.
+- Para ações financeiras, legais, destrutivas ou difíceis de desfazer, ofereça revisão, confirmação e correção.
+- Apresente estados de carregamento, vazio, sucesso, erro, indisponibilidade e offline quando relevantes.
+
+#### Robusto
+
+- Controles interativos devem expor nome, função, estado e valor para tecnologia assistiva.
+- Prefira elementos semânticos e padrões nativos a equivalentes customizados.
+- Mensagens de status, erro e sucesso devem ser anunciáveis sem deslocar inesperadamente o foco.
 
 ### Gate de entrega
 
-Uma tela só está concluída após conferir vínculos no Figma:
+Antes de concluir uma tela:
 
-1. No frame raiz, `Global Tokens` e `Alias Tokens` devem estar no modo correto — para Floqui, ambos em `Floqui`.
-2. Na tela de login, o frame externo usa `surface/bg brand bold`; no dashboard, o banner `Painel geral` usa `elements/bg brand subtle`.
-3. Todo gap, padding e raio autoral deve estar vinculado à variável; número digitado manualmente reprova.
-4. Todo texto autoral deve usar estilo semântico; vínculo apenas de cor não atende.
-5. Registre frames verificados, exceções e motivo na entrega.
+1. Confirme os modos de Global Tokens e Alias Tokens no frame raiz.
+2. Verifique vínculo de variável em todo fundo, borda, gap, padding e raio autoral.
+3. Verifique estilo semântico em todo texto autoral.
+4. Confirme instâncias e variantes públicas adequadas.
+5. Teste tarefa, teclado, foco, contraste, estados e responsividade.
+6. Registre exceções, motivo e plano de correção.
 
 ### Manutenção
 
-Ao criar ou revisar componente no Figma, atualize sua description:
-
-```md
-**O que é:**
-
-**Categoria:**
-
-**Quando usar:**
-
-**Quando não usar:**
-
-**Componentes periféricos:**
-```
-
-Atualize este arquivo para mudança semântica, nova categoria, componente público, depreciação ou relação entre componentes. Mudanças exclusivamente visuais, de token ou propriedade permanecem no Figma; registre-as no histórico quando afetarem uso ou implementação.
+Este arquivo é a versão de distribuição. Mantenha as decisões de origem em Foundations, Core Web e Core App e atualize este documento consolidado sempre que uma regra compartilhada ou de plataforma mudar.
