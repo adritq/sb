@@ -71,7 +71,8 @@ Use cor para reforçar significado, nunca como único indicador de estado. Estad
 
 ## Typography
 
-Use os estilos semânticos publicados. Não sobrescreva manualmente família, tamanho, peso, espaçamento ou line-height.
+Use os estilos semânticos publicados, ou seja, sempre use os text styles do Design Tokens ou da Lib de componentes (Core App ou Core Web), respeitando também as formatações específicas de cada tema. 
+Nunca quebre ou sobrescreva manualmente família, tamanho, peso, espaçamento ou line-height.
 
 - **Heading XL:** título principal de página, fluxo ou tarefa; use uma vez por área principal.
 - **Heading LG:** título de seção principal sob um Heading XL.
@@ -96,6 +97,11 @@ Uma boa composição:
 - mantém contraste e densidade apropriados ao dispositivo;
 - prevê carregamento, vazio, erro, sucesso e indisponibilidade quando aplicável;
 - preserva contexto, retorno e progresso em fluxos longos.
+
+Uma boa construção no Figma:
+
+- sempre que construir um frame, aplique o auto layout com os tokens de gap e padding;
+- quando tiver padrões repetitivos, é válido construir um componente local para servir como uma base reutilizável;
 
 ### Core Web
 
